@@ -1,71 +1,71 @@
-CREATE DATABASE Colyseum;
+CREATE DATABASE colyseum;
 
-USE Colyseum;
+USE colyseum;
 
-CREATE TABLE `Clients` (
-  `Id` SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT,
-  `LastName` VARCHAR(45) NOT NULL,
-  `FirstName` VARCHAR(45) NOT NULL,
-  `BirthDate` DATE NOT NULL,
-  `Card` BOOLEAN NOT NULL,
-  `CardNumber` INT UNSIGNED,
+CREATE TABLE `clients` (
+  `id` SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `lastName` VARCHAR(45) NOT NULL,
+  `firstName` VARCHAR(45) NOT NULL,
+  `birthDate` DATE NOT NULL,
+  `card` BOOLEAN NOT NULL,
+  `cardNumber` INT UNSIGNED,
   PRIMARY KEY (Id)
 );
 
-CREATE TABLE `Cards` (
-  `Id` SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT,
-  `CardNumber` INT UNSIGNED NOT NULL,
-  `CardTypesId` SMALLINT UNSIGNED NOT NULL,
+CREATE TABLE `cards` (
+  `id` SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `cardNumber` INT UNSIGNED NOT NULL,
+  `cardTypesId` SMALLINT UNSIGNED NOT NULL,
   PRIMARY KEY (Id)
 );
 
-CREATE TABLE `CardTypes` (
-  `Id` SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT,
-  `Type` VARCHAR(45) NOT NULL,
-  `Discount` INT UNSIGNED NOT NULL,
+CREATE TABLE `cardTypes` (
+  `id` SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `type` VARCHAR(45) NOT NULL,
+  `discount` INT UNSIGNED NOT NULL,
   PRIMARY KEY (Id)
 );
 
-CREATE TABLE `Shows` (
-  `Id` SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT,
-  `Title` VARCHAR(45) NOT NULL,
-  `Performer` VARCHAR(45) NOT NULL,
-  `Date` DATE NOT NULL,
-  `ShowTypesId` SMALLINT UNSIGNED NOT NULL,
-  `FirstGenresId` SMALLINT UNSIGNED NOT NULL,
-  `SecondGenreId` SMALLINT UNSIGNED NOT NULL,
-  `Duration` TIME NOT NULL,
-  `StartTime` TIME NOT NULL,
+CREATE TABLE `shows` (
+  `id` SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `title` VARCHAR(45) NOT NULL,
+  `performer` VARCHAR(45) NOT NULL,
+  `date` DATE NOT NULL,
+  `showTypesId` SMALLINT UNSIGNED NOT NULL,
+  `firstGenresId` SMALLINT UNSIGNED NOT NULL,
+  `secondGenreId` SMALLINT UNSIGNED NOT NULL,
+  `duration` TIME NOT NULL,
+  `startTime` TIME NOT NULL,
   PRIMARY KEY (Id)
 );
 
-CREATE TABLE `Tickets` (
-  `Id` SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT,
-  `Price` FLOAT NOT NULL,
-  `BookingsId` SMALLINT UNSIGNED NOT NULL,
+CREATE TABLE `tickets` (
+  `id` SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `price` FLOAT NOT NULL,
+  `bookingsId` SMALLINT UNSIGNED NOT NULL,
   PRIMARY KEY (Id)
 );
 
-CREATE TABLE `Bookings` (
-  `Id` SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT,
-  `ClientId` SMALLINT UNSIGNED NOT NULL,
+CREATE TABLE `bookings` (
+  `id` SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `clientId` SMALLINT UNSIGNED NOT NULL,
   PRIMARY KEY (Id)
 );
 
-CREATE TABLE `ShowTypes` (
-  `Id` SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT,
-  `Type` VARCHAR (45) NOT NULL,
+CREATE TABLE `showTypes` (
+  `id` SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `type` VARCHAR (45) NOT NULL,
   PRIMARY KEY (Id)
 );
 
-CREATE TABLE `Genres` (
-  `Id` SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT,
-  `Genre` VARCHAR(45) NOT NULL,
-  `ShowTypesId` SMALLINT UNSIGNED NOT NULL,
+CREATE TABLE `genres` (
+  `id` SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `genre` VARCHAR(45) NOT NULL,
+  `showTypesId` SMALLINT UNSIGNED NOT NULL,
   PRIMARY KEY (Id)
 );
 
-INSERT INTO `Clients` (`LastName`,`FirstName`,`BirthDate`,`Card`,`CardNumber`)
+INSERT INTO `clients` (`lastName`,`firstName`,`birthDate`,`card`,`cardNumber`)
 VALUES ('Brennan','Guinevere','1994-02-05',1,2627),
 ('Dean','Ori','1973-11-23',0,NULL),
 ('Sharpe','Nora','1983-03-10',0,NULL),
@@ -92,7 +92,7 @@ VALUES ('Brennan','Guinevere','1994-02-05',1,2627),
 ('Stark','Keiko','1985-04-08',0,NULL),
 ('London','Sean','1975-02-02',0,NULL);
 
-INSERT INTO `Cards` (`CardNumber`,`CardTypesId`)
+INSERT INTO `cards` (`cardNumber`,`cardTypesId`)
 VALUES (2627,3),
 (2022,3),
 (2608,3),
@@ -104,13 +104,13 @@ VALUES (2627,3),
 (2927,2),
 (2775,2);
 
-INSERT INTO `CardTypes` (`Type`,`Discount`)
+INSERT INTO `cardTypes` (`type`,`discount`)
 VALUES ('Fidélité',20),
 ('Famille Nombreuse',30),
 ('Etudiant',40),
 ('Employé',50);
 
-INSERT INTO `Shows` (`Title`,`Performer`,`Date`,`ShowTypesId`,`FirstGenresId`,`SecondGenreId`,`Duration`,`StartTime`)
+INSERT INTO `shows` (`title`,`performer`,`date`,`showTypesId`,`firstGenresId`,`secondGenreId`,`duration`,`startTime`)
 VALUES ('Vestibulum accumsan','Osborn','2016-10-15',1,4,3,'02:00:00','20:00:00'),
 ('Venenatis lacus','Dale','2017-01-05',1,1,8,'02:00:00','20:00:00'),
 ('Sem egestas','Juarez','2017-02-01',1,8,21,'02:00:00','20:00:00'),
@@ -120,7 +120,7 @@ VALUES ('Vestibulum accumsan','Osborn','2016-10-15',1,4,3,'02:00:00','20:00:00')
 ('Cursus. Nunc','Prince','2020-05-02',1,6,10,'02:00:00','20:00:00'),
 ('Ornare lectus','Butler','2016-12-25',1,10,9,'02:00:00','20:00:00');
 
-INSERT INTO `Tickets` (`Price`,`BookingsId`)
+INSERT INTO `tickets` (`price`,`bookingsId`)
 VALUES (40,1),(40,1),(40,1),(40,1),(40,1),(40,2),(40,2),(40,2),(40,2),(40,2),(40,3),(40,3),(40,3),(40,4),(40,5),(40,6),
 (40,6),(40,6),(40,6),(40,6),(40,7),(40,7),(40,8),(40,9),(40,9),(40,9),(40,9),(40,9),(40,9),(40,9),(40,10),(40,10),
 (40,10),(40,10),(40,11),(40,11),(40,11),(40,11),(40,11),(40,11),(40,12),(40,12),(40,12),(40,12),(40,12),(40,12),(40,12),
@@ -129,7 +129,7 @@ VALUES (40,1),(40,1),(40,1),(40,1),(40,1),(40,2),(40,2),(40,2),(40,2),(40,2),(40
 (40,19),(40,19),(40,19),(40,19),(40,20),(40,20),(40,20),(40,21),(40,21),(40,21),(40,21),(40,22),(40,22),(40,22),(40,23),
 (40,23),(40,23),(40,24),(40,24),(40,24),(40,25),(40,25),(40,25);
 
-INSERT INTO `Bookings` (`ClientId`)
+INSERT INTO `bookings` (`clientId`)
 VALUES (1),
 (2),
 (3),
@@ -156,13 +156,13 @@ VALUES (1),
 (24),
 (25);
 
-INSERT INTO `ShowTypes` (`Type`)
+INSERT INTO `showTypes` (`type`)
 VALUES ('Concert'),
 ('Théâtre'),
 ('Humour'),
 ('Danse');
 
-INSERT INTO `Genres` (`Genre`,`ShowTypesId`)
+INSERT INTO `genres` (`genre`,`showTypesId`)
 VALUES ('Variété et chanson française',1),
 ('Variété internationale',1),
 ('Pop/Rock',1),
