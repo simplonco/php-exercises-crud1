@@ -1,4 +1,4 @@
-CREATE DATABASE colyseum;
+CREATE DATABASE colyseum CHARACTER SET 'utf8';
 
 USE colyseum;
 
